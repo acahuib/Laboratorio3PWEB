@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Texto</title>
+    <style>
+        #texto {
+            font-size: 16px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="texto">Este es un texto cuyo tamaño y color puedes cambiar con los botones de abajo.</div>
+    <br>
+    <button onclick="cambiarTamaño('aumentar')">Aumentar tamaño</button>
+    <button onclick="cambiarTamaño('disminuir')">Disminuir tamaño</button>
+    <br><br>
+    <button onclick="cambiarColor('rojo')">Color Rojo</button>
+    <button onclick="cambiarColor('azul')">Color Azul</button>
+    <button onclick="cambiarColor('negro')">Color Negro</button>
+
+    <script>
+        function cambiarTamaño(accion) {
+            let texto = document.getElementById('texto');
+            let estilo = window.getComputedStyle(texto, null).getPropertyValue('font-size');
+            let tamañoActual = parseFloat(estilo);
+
+            if (accion === 'aumentar') {
+                texto.style.fontSize = (tamañoActual + 2) + 'px';
+            } else if (accion === 'disminuir') {
+                texto.style.fontSize = (tamañoActual - 2) + 'px';
+            }
+        }
+
+        function cambiarColor(color) {
+            let texto = document.getElementById('texto');
+            texto.style.color = color;
+        }
+    </script>
+</body>
+</html>
+
