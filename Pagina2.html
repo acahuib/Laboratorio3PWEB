@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones Dinámicas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Operaciones Dinámicas</h1>
+        <label for="arg1">Argumento 1:</label>
+        <input type="text" id="arg1" name="arg1"><br><br>
+
+        <label for="operator">Operador:</label>
+        <select id="operator" name="operator">
+            <optgroup label="Aritméticos">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+                <option value="%">%</option>
+            </optgroup>
+            <optgroup label="Lógicos">
+                <option value="&&">AND (&&)</option>
+                <option value="||">OR (||)</option>
+            </optgroup>
+            <optgroup label="Bits">
+                <option value="&">AND (&)</option>
+                <option value="|">OR (|)</option>
+                <option value="^">XOR (^)</option>
+                <option value="<<">Shift Left (<<)</option>
+                <option value=">>">Shift Right (>>)</option>
+            </optgroup>
+        </select><br><br>
+
+        <label for="arg2">Argumento 2:</label>
+        <input type="text" id="arg2" name="arg2"><br><br>
+
+        <button onclick="realizarOperacion()">Calcular</button>
+
+        <div class="result" id="resultado"></div>
+    </div>
+
+    <script>
+        function realizarOperacion() {
+            const arg1 = document.getElementById('arg1').value;
+            const operator = document.getElementById('operator').value;
+            const arg2 = document.getElementById('arg2').value;
+            let resultado;
+
+            // Convertir argumentos a números o booleanos según el operador
+            const num1 = isNaN(arg1) ? parseFloat(arg1) : Number(arg1);
+            const num2 = isNaN(arg2) ? parseFloat(arg2) : Number(arg2);
+
+            if (isNaN(num1) || isNaN(num2)) {
+                alert("Por favor, ingresa números válidos.");
+                return;
+            }
+
+            switch (operator) {
+                case '+':
+                    resultado = num1 + num2;
+                    break;
+                case '-':
+                    resultado = num1 - num2;
+                    break;
+                case '*':
+                    resultado = num1 * num2;
+                    break;
+                case '/':
+                    resultado = num1 / num2;
+                    break;
+                case '%':
+                    resultado = num1 % num2;
+                    break;
+                case '&&':
+                    resultado = num1 && num2;
+                    break;
+                case '||':
+                    resultado = num1 || num2;
+                    break;
+                case '&':
+                    resultado = num1 & num2;
+                    break;
+                case '|':
+                    resultado = num1 | num2;
+                    break;
+                case '^':
+                    resultado = num1 ^ num2;
+                    break;
+                case '<<':
+                    resultado = num1 << num2;
+                    break;
+                case '>>':
+                    resultado = num1 >> num2;
+                    break;
+                default:
+                    resultado = "Operador no soportado";
+            }
+
+            document.getElementById('resultado').innerText = `Resultado: ${resultado}`;
+        }
+    </script>
+</body>
+</html>
+
