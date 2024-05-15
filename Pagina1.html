@@ -36,7 +36,13 @@
 
         function cambiarColor(color) {
             let texto = document.getElementById('texto');
-            texto.style.color = color;
+            if (color === 'rojo') {
+                texto.style.color = 'red';
+            } else if (color === 'azul') {
+                texto.style.color = 'blue';
+            } else if (color === 'negro') {
+                texto.style.color = 'black';
+            }
         }
     </script>
 </body>
